@@ -1,0 +1,75 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{physics}
+
+\begin{document}
+
+\section{Comprehensive Constrained Spherical Pendulum Equations}
+
+\subsection{Variables}
+\begin{itemize}
+    \item $r(t)$ - pendulum length (variable due to pumping and COM shifts)
+    \item $\theta(t)$ - polar angle (constrained to lower hemisphere)
+    \item $\phi(t)$ - azimuthal angle
+    \item $\alpha, \beta, \gamma$ - bob rotation angles around x, y, z axes respectively
+    \item $m$ - mass of the pendulum (including bob)
+    \item $g$ - gravitational acceleration
+    \item $I$ - moment of inertia of the bob
+    \item $\varepsilon_x, \varepsilon_y, \varepsilon_z$ - COM offset from bob's geometric center
+\end{itemize}
+
+\subsection{Equations}
+
+\subsubsection{1. Pendulum motion equations:}
+\begin{align*}
+&(r + \varepsilon_x\sin \theta\cos \phi + \varepsilon_y\sin \theta\sin \phi - \varepsilon_z\cos \theta)\ddot{\theta} - \\
+&(r + \varepsilon_x\sin \theta\cos \phi + \varepsilon_y\sin \theta\sin \phi - \varepsilon_z\cos \theta)\dot{\phi}^2\sin \theta\cos \theta + \\
+&g\sin \theta + 2\dot{r}\dot{\theta} + \\
+&(\dot{\varepsilon}_x\cos \theta\cos \phi + \dot{\varepsilon}_y\cos \theta\sin \phi + \dot{\varepsilon}_z\sin \theta)\dot{\theta} +\\
+&(\dot{\varepsilon}_x\sin \theta\sin \phi - \dot{\varepsilon}_y\sin \theta\cos \phi)\dot{\phi} = 0
+\end{align*}
+
+\begin{align*}
+&(r + \varepsilon_x\sin \theta\cos \phi + \varepsilon_y\sin \theta\sin \phi - \varepsilon_z\cos \theta)^2\ddot{\phi}\sin \theta + \\
+&2(r + \varepsilon_x\sin \theta\cos \phi + \varepsilon_y\sin \theta\sin \phi - \varepsilon_z\cos \theta)^2\dot{\theta}\dot{\phi}\cos \theta + \\
+&2(r + \varepsilon_x\sin \theta\cos \phi + \varepsilon_y\sin \theta\sin \phi - \varepsilon_z\cos \theta)\dot{r}\dot{\phi}\sin \theta + \\
+&2(\dot{\varepsilon}_x\cos \phi + \dot{\varepsilon}_y\sin \phi)(r + \varepsilon_x\sin \theta\cos \phi + \varepsilon_y\sin \theta\sin \phi - \varepsilon_z\cos \theta)\dot{\phi}\sin \theta = 0
+\end{align*}
+
+\subsubsection{2. Bob rotation equations:}
+\begin{align*}
+I\ddot{\alpha} + (I_z - I_y)\dot{\beta}\dot{\gamma} + mg(\varepsilon_y\cos \theta\cos \alpha - \varepsilon_z\sin \theta) &= \tau_x \\
+I\ddot{\beta} + (I_x - I_z)\dot{\alpha}\dot{\gamma} + mg(\varepsilon_z\cos \theta\sin \alpha - \varepsilon_x\cos \theta) &= \tau_y \\
+I\ddot{\gamma} + (I_y - I_x)\dot{\alpha}\dot{\beta} + mg(\varepsilon_x\sin \theta - \varepsilon_y\cos \theta\sin \alpha) &= \tau_z
+\end{align*}
+
+\subsubsection{3. COM shift equations:}
+\begin{align*}
+\varepsilon_x &= A_x\sin(\omega_x t + \delta_x) + B_x\sin(\Omega t + \alpha) \\
+\varepsilon_y &= A_y\sin(\omega_y t + \delta_y) + B_y\sin(\Omega t + \beta) \\
+\varepsilon_z &= A_z\sin(\omega_z t + \delta_z) + B_z\sin(\Omega t + \gamma)
+\end{align*}
+
+\subsubsection{4. Pumping action (variable length):}
+\begin{equation*}
+r(t) = r_0 + C\sin(\Omega_p t + \delta_p)
+\end{equation*}
+
+\subsubsection{5. Constraint equation:}
+\begin{equation*}
+0 \leq \theta \leq \pi/2
+\end{equation*}
+
+Where:
+\begin{itemize}
+    \item $\tau_x, \tau_y, \tau_z$ are external torques on the bob
+    \item $A_i, B_i$ are amplitudes of COM shift
+    \item $\omega_i$ are frequencies of internal COM shift
+    \item $\Omega$ is the frequency of COM shift due to bob rotation
+    \item $\delta_i$ are phase shifts
+    \item $C$ is the amplitude of length change due to pumping
+    \item $\Omega_p$ is the pumping frequency
+    \item $\delta_p$ is the pumping phase shift
+\end{itemize}
+
+\end{document}
